@@ -1,0 +1,43 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>All Books</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1> Students </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th> ID </th>
+                    <th> Name </th>
+                    <th> Email </th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${students.isEmpty()}">
+                    <td colspan="2"> No Students Available </td>
+                </tr>
+                <tr th:each="student : ${students}">
+                    <td><span th:text="${student.id}"> Id </span></td>
+                    <td><span th:text="${student.name}"> Name </span></td>
+                    <td><span th:text="${student.email}"> Email </span></td>
+                    <td><a class="btn btn-warning" href="#" th:href="@{'/students/' + ${student.id}}"> Details </a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <a class="btn btn-success" href="#" th:href="@{/students/addView}"> Add Student </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
